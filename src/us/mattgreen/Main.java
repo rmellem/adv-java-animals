@@ -1,22 +1,23 @@
 package us.mattgreen;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
 
     private final static FileOutput outFile = new FileOutput("animals.txt");
     private final static FileInput inFile = new FileInput("animals.txt");
+    private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        ArrayList<Talkable> zoo = new ArrayList<>();
+        ArrayList<Talkable> talkables = new ArrayList<>();
 
         // Lines to Replace Begin Here
-        zoo.add(new Dog(true, "Bean"));
-        zoo.add(new Cat(9, "Charlie"));
-        zoo.add(new Teacher(44, "Stacy Read"));
+        InputGathering gathering = new InputGathering(talkables);
+        gathering.addTalkables();
         // End Lines to Replace
 
-        for (Talkable thing : zoo) {
+        for (Talkable thing : gathering.getTalkables()) {
             printOut(thing);
         }
         outFile.fileClose();
@@ -31,7 +32,7 @@ public class Main {
     }
 
     public static void printOut(Talkable p) {
-        System.out.println(p.getName() + " says=" + p.talk());
+        System.out.println(p.getName() + " says = " + p.talk());
         outFile.fileWrite(p.getName() + " | " + p.talk());
     }
 }

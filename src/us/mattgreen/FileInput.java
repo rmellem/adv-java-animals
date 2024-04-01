@@ -26,7 +26,8 @@ public class FileInput {
         String line;
         try {
             while ((line = in.readLine()) != null) {
-                System.out.println(line);
+                System.out.print(line);
+                System.out.println(" | File was read properly!");
             }
         } catch (Exception e) {
             System.out.println("File Write Error: " + fileName + " " + e);

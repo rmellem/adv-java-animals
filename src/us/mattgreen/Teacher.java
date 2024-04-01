@@ -24,3 +24,4 @@ public class Teacher extends Person implements Talkable {
         return "Don't forget to do the assigned reading!";
     }
 }
+
